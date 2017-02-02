@@ -20,7 +20,7 @@ import (
 
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/internal"
+	"github.com/andrewhoff/oauth2/internal"
 )
 
 // Client Credentials Config describes a 2-legged OAuth2 flow, with both the

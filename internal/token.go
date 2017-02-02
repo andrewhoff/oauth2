@@ -119,6 +119,7 @@ var brokenAuthHeaderProviders = []string{
 	"https://api.patreon.com/",
 	"https://sandbox.codeswholesale.com/oauth/token",
 	"https://api.codeswholesale.com/oauth/token",
+	".myshopify.com/admin/oauth/access_token",
 }
 
 func RegisterBrokenAuthHeaderProvider(tokenURL string) {
@@ -135,7 +136,7 @@ func RegisterBrokenAuthHeaderProvider(tokenURL string) {
 // - Stripe only accepts client secret in Auth header with Bearer method, not Basic
 func providerAuthHeaderWorks(tokenURL string) bool {
 	for _, s := range brokenAuthHeaderProviders {
-		if strings.HasPrefix(tokenURL, s) {
+		if strings.HasPrefix(tokenURL, s) || strings.HasSuffix(tokenURL, s) {
 			// Some sites fail to implement the OAuth2 spec fully.
 			return false
 		}
